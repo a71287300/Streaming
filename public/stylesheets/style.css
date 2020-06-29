@@ -150,6 +150,7 @@ a {
 #main .video video{
   min-width: 100%; 
   min-height: 100%; 
+  max-height: 700px;
 }
 
 .jumbotron{
