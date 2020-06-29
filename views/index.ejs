@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/zh-tw.js'></script>
+  <style>
+    video {
+        object-fit: cover;
+    }
+    
+    @media (min-width: 900px) {
+      video {
+          height: 480px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <section id="title">
+      <div class="jumbotron">
+        <h1 class="display-4">愷瑞直播</h1>
+      </div>
+    </section>
+
+    <section id="main">
+      <div class="video">
+        <video id="video" controls autoplay playsinline onended="load()"></video>
+      </div>
+
+        <div class="chatroom">
+        
+        
+          <div class="chats">
+            <div class="chat">
+              <div class="group">
+                <div class="name"></div>
+                <div class="msg"></div>
+              </div>
+              <div class="time"></div>
+            </div>
+          </div>
+
+          <div class="message">
+            <input id="name" type="text" disabled="disabled" placeholder="nickname"></output>
+            <input id="msg" type="text" placeholder="input the message" />
+            <button type="button" class="btn btn-outline-primary">送出</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <input id="nickname" type="text" placeholder="輸入暱稱"/>
+      <button id="myBtn" class="btn btn-outline-primary" >確認</button>
+    </div>
+
+  </div>
+</body>
+<script src="./javascripts/sign.js"></script>
+<script src="./javascripts/app.js"></script> 
+<script src="./javascripts/flv.min.js"></script>
+<script>
+  function load(){
+    if (flvjs.isSupported()) {
+        const video = document.getElementById('video');
+        const flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            url: `http://localhost:8000/live/test.flv`
+        });
+        flvPlayer.attachMediaElement(video)
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+  }
+  load();
+</script>
+
+</html>
