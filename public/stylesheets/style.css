@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
 }
 
 a {
@@ -112,7 +113,17 @@ a {
 }
 
 
+#main .video video {
+  min-width: 60%; 
+  min-height: 60%; 
+  width: auto;
+  height: auto;
+}
+
 #main {
+  min-width: 100%; 
+  min-height: 70%; 
+  width: auto;
   height: 70vh;
 }
 
@@ -129,11 +140,16 @@ a {
 
 #main .video{
   float: left;
-  height: inherit;
+  min-width: 70%; 
+  min-height: 70%; 
+  width: auto;
+  height: auto;
 }
 
-#main #video{
-  height: inherit;
+
+#main .video video{
+  min-width: 100%; 
+  min-height: 100%; 
 }
 
 .jumbotron{
